@@ -7,8 +7,12 @@ import (
 
 func main() {
 	fmt.Println("Starting HTTP Server on", getRunAddr())
+
+	// register handlers
 	mux := http.DefaultServeMux
-	mux.HandleFunc("", rootHandler)
+	mux.HandleFunc("/", rootHandler)
+	mux.HandleFunc("/ws", socketHandler)
+
 	http.ListenAndServe(getRunAddr(), mux)
 }
 
