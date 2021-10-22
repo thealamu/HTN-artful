@@ -6,9 +6,14 @@ import (
 	"github.com/gorilla/websocket"
 )
 
+var originIgnore = func(r *http.Request) bool {
+	return true
+}
+
 var upgrader = websocket.Upgrader{
 	ReadBufferSize:  1024,
 	WriteBufferSize: 1024,
+	CheckOrigin:     originIgnore,
 }
 
 func socketHandler(cm *ChatManager) http.HandlerFunc {
