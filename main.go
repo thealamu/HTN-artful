@@ -7,7 +7,9 @@ import (
 
 func main() {
 	fmt.Println("Starting HTTP Server on", getRunAddr())
-	http.ListenAndServe(getRunAddr(), http.HandlerFunc(rootHandler))
+	mux := http.DefaultServeMux
+	mux.HandleFunc("", rootHandler)
+	http.ListenAndServe(getRunAddr(), mux)
 }
 
 func getRunAddr() string {
