@@ -8,5 +8,5 @@ import (
 var rootResponseMsg = "Nothing to see here."
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, rootResponseMsg)
+	fmt.Fprint(w, rootResponseMsg)
 }
