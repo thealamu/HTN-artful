@@ -5,6 +5,8 @@ import (
 	"net/http"
 )
 
+var rootResponseMsg = "Nothing to see here."
+
 func rootHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Hello World")
+	fmt.Fprintln(w, rootResponseMsg)
 }
