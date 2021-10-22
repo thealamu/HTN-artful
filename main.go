@@ -11,7 +11,9 @@ func main() {
 	// register handlers
 	mux := http.DefaultServeMux
 	mux.HandleFunc("/", rootHandler)
-	mux.HandleFunc("/ws", socketHandler)
+
+	chatManager := NewChatManager()
+	mux.HandleFunc("/ws", socketHandler(chatManager))
 
 	http.ListenAndServe(getRunAddr(), mux)
 }
