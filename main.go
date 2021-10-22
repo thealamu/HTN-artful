@@ -5,14 +5,9 @@ import (
 	"net/http"
 )
 
-func rootHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Hello World")
-}
-
 func main() {
-	addr := getRunAddr()
-	fmt.Println("Starting HTTP Server on", addr)
-	http.ListenAndServe(addr, http.HandlerFunc(rootHandler))
+	fmt.Println("Starting HTTP Server on", getRunAddr())
+	http.ListenAndServe(getRunAddr(), http.HandlerFunc(rootHandler))
 }
 
 func getRunAddr() string {
